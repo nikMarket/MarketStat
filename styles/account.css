@@ -1,0 +1,540 @@
+/* =========================================== REGISTRATION================================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #30353E;
+}
+
+.container {
+    position: relative;
+    width: 70vw;
+    height: 80vh;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #30353E, #30353E);
+    z-index: 6;
+    transform: translateX(100%);
+    transition: 1s ease-in-out;
+}
+
+.signin-signup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 5;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    min-width: 238px;
+    padding: 0 10px;
+}
+
+form.sign-in-form {
+    opacity: 1;
+    transition: 0.5s ease-in-out;
+    transition-delay: 1s;
+}
+
+form.sign-up-form {
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+    transition-delay: 1s;
+}
+
+.title {
+    font-size: 35px;
+    color: #30353E;
+    margin-bottom: 10px;
+}
+
+.input-field {
+    width: 100%;
+    height: 50px;
+    background: #e6e6e6;
+    margin: 10px 0;
+    border: 2px solid #CFC8FF;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.input-field i {
+    flex: 1;
+    text-align: center;
+    color: #30353E;
+    font-size: 18px;
+}
+
+.input-field input {
+    flex: 5;
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    color: #444;
+}
+
+.btn {
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 50px;
+    background: #CFC8FF;
+    color: #30353E;
+    font-weight: 600;
+    margin: 10px 0;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #9D51CD;
+}
+
+.social-text {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icon {
+    height: 45px;
+    width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    border: 1px solid #444;
+    border-radius: 50px;
+    margin: 0 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: #df4adf;
+    border-color: #df4adf;
+}
+
+.panels-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 35%;
+    min-width: 238px;
+    padding: 0 10px;
+    text-align: center;
+    z-index: 6;
+}
+
+.left-panel {
+    pointer-events: none;
+}
+
+.content {
+    color: #ffffff;
+    transition: 1.1s ease-in-out;
+    transition-delay: 0.5s;
+}
+
+.panel h3 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.panel p {
+    font-size: 15px;
+    padding: 10px 0;
+}
+
+.image {
+    width: 100%;
+    transition: 1.1s ease-in-out;
+    transition-delay: 0.4s;
+}
+
+.left-panel .image,
+.left-panel .content {
+    transform: translateX(-200%);
+}
+
+.right-panel .image,
+.right-panel .content {
+    transform: translateX(0);
+}
+
+.account-text {
+    display: none;
+}
+
+
+/*Animation*/
+
+.container.sign-up-mode::before {
+    transform: translateX(0);
+}
+
+.container.sign-up-mode .right-panel .image,
+.container.sign-up-mode .right-panel .content {
+    transform: translateX(200%);
+}
+
+.container.sign-up-mode .left-panel .image,
+.container.sign-up-mode .left-panel .content {
+    transform: translateX(0);
+}
+
+.container.sign-up-mode form.sign-in-form {
+    opacity: 0;
+}
+
+.container.sign-up-mode form.sign-up-form {
+    opacity: 1;
+}
+
+.container.sign-up-mode .right-panel {
+    pointer-events: none;
+}
+
+.container.sign-up-mode .left-panel {
+    pointer-events: all;
+}
+
+/* ================================================================================================================================== */
+/* =========================================== USER ================================================*/
+
+/* Google Fonts  */
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;700&display=swap');
+
+/* Globals  */
+* {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+/* Variables  */
+:root {
+    --color_Lavande: #CFC8FF;
+    --color_Blue: #573B71;
+    --color_Dark1: #292C34;
+    --color_Dark2: #30353E;
+    --color_Light1: #dfdfdf;
+    --color_Light2: #c4c4c4;
+}
+
+
+
+/* =============== Home Section =============== */
+.home {
+    position: relative;
+    background-color: var(--color_Dark1);
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    transition: all .5s ease;
+}
+
+.logotipe {
+    left: 50px;
+    top: 45px;
+    position: fixed;
+}
+
+
+
+.accaunt .textname {
+    position: fixed;
+    color: #c4c4c4;
+    font-size: 20px;
+    left: 1675px;
+    top: 60px;
+    font-weight: 400;
+}
+
+.accauntimage {
+    position: fixed;
+    left: 1840px;
+    top: 50px;
+}
+
+.companyname {
+    position: fixed;
+    left: 300px;
+    top: 500px;
+}
+
+.tablename {
+    position: fixed;
+    left: 400px;
+    top: 250px;
+    color: #dfdfdf;
+}
+
+.tablename .tr,
+td {
+    border: 1px solid #30353E;
+    background-color: #30353E;
+    border-radius: 5px;
+    width: 300px;
+    height: 50px;
+    padding: 20px;
+}
+
+
+.tabletwoname {
+    position: fixed;
+    left: 400px;
+    top: 350px;
+    color: #dfdfdf;
+}
+
+.tablephone {
+    position: fixed;
+    left: 400px;
+    top: 450px;
+    color: #dfdfdf;
+}
+
+.tablemail {
+    position: fixed;
+    left: 400px;
+    top: 550px;
+    color: #dfdfdf;
+}
+
+
+
+.tablecompanyname {
+    position: fixed;
+    left: 800px;
+    top: 250px;
+    color: #dfdfdf;
+}
+
+
+.tableinn {
+    position: fixed;
+    left: 800px;
+    top: 350px;
+    color: #dfdfdf;
+}
+
+
+.tablechecking {
+    position: fixed;
+    left: 800px;
+    top: 450px;
+    color: #dfdfdf;
+}
+
+.tablebic {
+    position: fixed;
+    left: 800px;
+    top: 550px;
+    color: #dfdfdf;
+}
+
+.dowloadimage {
+    position: absolute;
+    left: 1260px;
+    top: 260px;
+}
+
+.dowloadshape {
+    position: absolute;
+    left: 1250px;
+    top: 250px;
+}
+
+.circle {
+    background-color: #CFC8FF;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.saveimage {
+    top: 450px;
+    left: 1255px;
+    position: absolute;
+    background-color: #CFC8FF;
+    border-radius: 10px;
+    height: 40px;
+    width: 160px;
+    color: #292C34;
+    border-color: #CFC8FF;
+    user-select: none;
+    font-size: 20px;
+
+
+}
+
+.saveimage {
+    cursor: pointer;
+    outline: none;
+}
+
+
+.save {
+    top: 700px;
+    left: 810px;
+    position: absolute;
+    background-color: #CFC8FF;
+    border-radius: 10px;
+    height: 40px;
+    width: 160px;
+    color: #292C34;
+    border-color: #CFC8FF;
+    user-select: none;
+    font-size: 20px;
+
+
+}
+
+.save {
+    cursor: pointer;
+    outline: none;
+    font-size: 20px;
+}
+
+.work {
+    position: absolute;
+    left: 400px;
+    top: 700px;
+}
+
+.worktext {
+    position: fixed;
+    color: #c4c4c4;
+    font-size: 20px;
+    left: 450px;
+    top: 710px;
+    font-weight: 400;
+}
+
+/* ================================================================================================================================== */
+
+
+
+
+
+
+
+/*Responsive*/
+
+/* =========================================== REGISTRATION================================================*/
+
+@media (max-width:779px) {
+    .container {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+@media (max-width:635px) {
+    .container::before {
+        display: none;
+    }
+
+    form {
+        width: 80%;
+    }
+
+    form.sign-up-form {
+        display: none;
+    }
+
+    .container.sign-up-mode2 form.sign-up-form {
+        display: flex;
+        opacity: 1;
+    }
+
+    .container.sign-up-mode2 form.sign-in-form {
+        display: none;
+    }
+
+    .panels-container {
+        display: none;
+    }
+
+    .account-text {
+        display: initial;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width:320px) {
+    form {
+        width: 90%;
+    }
+}
+
+/* ================================================================================================================================== */
+
+
+/* =========================================== USER ================================================*/
+@media (max-width: 1080px) {}
+
+/* For Medium Devices */
+@media (max-width: 774px) {}
+
+@media (max-width: 560px) {}
+
+/* For Small Devices */
+@media (max-width: 360px) {}

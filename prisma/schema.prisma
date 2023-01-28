@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int      @id @unique(map: "id") @default(autoincrement())
+  email         String   @unique(map: "email") @db.VarChar(100)
+  password_hash String   @db.Text
+  updated_at    DateTime @default(now()) @updatedAt @db.Timestamp(0)
+  created_at    DateTime @default(dbgenerated("'2000-01-01 00:00:00'")) @db.Timestamp(0)
+  auth_token    String   @unique(map: "auth_token") @db.VarChar(100)
+  first_name    String   @db.Text
+  second_name   String   @db.Text
+}
+
+model UserInfo {
+  id              Int    @id @unique(map: "id") @default(autoincrement())
+  user_id         Int    @unique()
+  phone_number    String @default("") @db.Text
+  company_name    String @default("") @db.Text
+  INN             String @default("") @db.Text
+  payment_account String @default("") @db.Text
+  bank_id         String @default("") @db.Text
+}
+
+model Categories {
+  id       Int    @unique(map: "unique8") @default(autoincrement())
+  Category String @db.Text
+}
+
+model Prices {
+  id        Int    @id @unique(map: "id") @default(autoincrement())
+  Subject   String @unique(map: "Subject") @db.VarChar(100)
+  FullPrice Int
+  Price     Int
+}
+
+model Stores {
+  id    Int    @unique(map: "unique5") @default(autoincrement())
+  Store String @db.Text
+}
+
+model Subjects {
+  id                     Int     @id @unique(map: "id") @default(autoincrement())
+  FullName               String? @db.Text
+  Store                  String  @db.Text
+  Category               String  @db.Text
+  Subject                String  @db.Text
+  CommissionPercentage   Int
+  CostLogisticsBox       Int
+  CostLogisticsMonopalet Int
+  CostStorageBox         Float
+  CostStorageMonopalet   Int
+  CostReceptionBox       Int
+  CostReceptionMonopalet Int
+  CostReceptionSupersafe Int
+  NeedCalculation        Boolean
+}
+
+model Turnover {
+  id       Int    @id @unique(map: "id") @default(autoincrement())
+  Category String @unique(map: "Category") @db.VarChar(100)
+  Turnover String @db.Text
+}
+
+model Calculations {
+  id       Int     @unique(map: "Calculations_pk") @default(autoincrement())
+  user_id  Int?
+  Store    String? @db.VarChar(500)
+  Category String? @db.VarChar(500)
+  Subject  String? @db.VarChar(500)
+  Name     String? @db.VarChar(500)
+  Brand    String? @db.VarChar(500)
+  Color    String? @db.VarChar(500)
+  Size     String? @db.VarChar(500)
+  Count    Int?
+  Cost     Int?
+  Barcode  String? @db.VarChar(14)
+}
