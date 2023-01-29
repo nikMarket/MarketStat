@@ -1594,6 +1594,7 @@ function MyApp({ Component, pageProps }) {
                 position:fixed;
                 color: #c4c4c4;
                 font-size: 20px;
+                text-align: left;
                 left: 1675px;
                 top: 60px;
                 font-weight: 400;
